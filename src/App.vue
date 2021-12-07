@@ -2,31 +2,31 @@
 import '@esri/calcite-components/dist/calcite/calcite.css'
 import '@arcgis/core/assets/esri/themes/light/main.css'
 import Home from './components/Home.vue'
+import Footer from './components/Footer.vue'
+import { ItemProps } from './components/NearbyCard.vue'
+
+const items: ItemProps[] = [
+  {
+    name: 'Donut shop',
+    address: '555 Main St, 90022',
+    bearing: 'SE',
+    distance: 22.4
+  },
+  {
+    name: 'Coffee shop',
+    address: '555 1st St, 91702',
+    bearing: 'N',
+    distance: 5.2
+  }
+];
 </script>
 
 <template>
   <main>
     <section>
-      <Home />
+      <Home :items="items" />
     </section>
-    <footer>
-      <aside>
-        <nav>
-          <calcite-button appearance="outline" color="blue" width="full" label="Home">
-            <calcite-icon icon="home"></calcite-icon>
-          </calcite-button>
-          <calcite-button appearance="outline" color="blue" width="full" label="Map">
-            <calcite-icon icon="layer"></calcite-icon>
-          </calcite-button>
-          <calcite-button appearance="outline" color="blue" width="full" label="Search">
-            <calcite-icon icon="search"></calcite-icon>
-          </calcite-button>
-          <calcite-button appearance="outline" color="blue" width="full" label="User">
-            <calcite-icon icon="user"></calcite-icon>
-          </calcite-button>
-        </nav>
-      </aside>
-    </footer>
+    <Footer />
   </main>
 </template>
 
@@ -51,19 +51,5 @@ section {
 
 #app {
   height: 100%;
-}
-
-nav {
-  display: flex;
-  width: 100%;
-}
-
-calcite-button {
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
-}
-
-footer {
-   flex-shrink: 0;
 }
 </style>

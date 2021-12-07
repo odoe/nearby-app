@@ -1,56 +1,41 @@
-<script setup lang="ts">
-defineProps()
-</script>
-
 <script lang="ts">
 import { defineCustomElements } from '@esri/calcite-components/dist/custom-elements'
 import Search from '@arcgis/core/widgets/Search'
 
 import NearbyCard, { ItemProps } from './NearbyCard.vue';
-
+import NearbyList from './NearbyList.vue';
+import { defineComponent } from '@vue/runtime-core';
+import { PropType } from 'vue';
 
 defineCustomElements()
 
-const items: ItemProps[] = [
-  {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  }
-];
-
-export default {
+export default defineComponent({
   components: {
-    NearbyCard
+    NearbyCard,
+    NearbyList
+},
+  props: {
+    items: {
+      type: Array as PropType<ItemProps[]>
+    }
   },
   methods: {
     loadSearch() {
       const search = new Search({
-        container: (this as any).$refs.search as HTMLElement
+        container: this.$refs.search as HTMLElement
       })
     }
   },
   mounted() {
-    (this as any).loadSearch()
+    this.loadSearch()
   }
-}
+})
 </script>
 
 <template>
   <div class="search-container" ref="search"></div>
   <div class="card-container">
-    <calcite-list v-for="{ name, address, distance, bearing } in items" :key="name">
-      <calcite-list-item>
-        <NearbyCard :name="name" :distance="distance" :bearing="bearing" :address="address" />
-      </calcite-list-item>
-    </calcite-list>
+    <NearbyList :items="items" />
   </div>
 </template>
 
