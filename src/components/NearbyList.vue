@@ -2,7 +2,7 @@
 import NearbyCard from './NearbyCard.vue'
 import { ItemProps } from '../interfaces'
 
-import { defineComponent } from '@vue/runtime-core'
+import { defineComponent } from 'vue'
 import { PropType } from 'vue';
 
 export default defineComponent({
