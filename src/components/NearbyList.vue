@@ -1,6 +1,8 @@
 <script lang="ts">
-import NearbyCard, { ItemProps } from './NearbyCard.vue';
-import { defineComponent } from '@vue/runtime-core';
+import NearbyCard from './NearbyCard.vue'
+import { ItemProps } from '../interfaces'
+
+import { defineComponent } from '@vue/runtime-core'
 import { PropType } from 'vue';
 
 export default defineComponent({

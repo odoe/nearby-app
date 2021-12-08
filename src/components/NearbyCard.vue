@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 export interface ItemProps {
     name: string;
     address: string;
@@ -7,10 +7,22 @@ export interface ItemProps {
 }
 
 defineProps<ItemProps>();
-</script>
+</script> -->
 
 <script lang="ts">
-export default {};
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    props: {
+        name: String,
+        address: String,
+        bearing: String,
+        distance: Number
+    },
+    mounted() {
+        console.log('mounted', this.$props)
+    }
+});
 </script>
 
 <template>
@@ -18,7 +30,7 @@ export default {};
         <span slot="title"><calcite-icon icon="beaker"></calcite-icon>{{ name }}</span>
         <span slot="subtitle">
             {{ bearing }}
-            <small>{{distance.toFixed(2)}}m</small>
+            <small>{{distance?.toFixed(2)}}m</small>
             <small>{{address}}</small>
         </span>
     </calcite-card>

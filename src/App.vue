@@ -3,7 +3,7 @@ import '@esri/calcite-components/dist/calcite/calcite.css'
 import '@arcgis/core/assets/esri/themes/light/main.css'
 import Home from './components/Home.vue'
 import Footer from './components/Footer.vue'
-import { ItemProps } from './components/NearbyCard.vue'
+import { ItemProps } from './interfaces'
 
 const items: ItemProps[] = [
   {

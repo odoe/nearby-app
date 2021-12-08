@@ -2,8 +2,10 @@
 import { defineCustomElements } from '@esri/calcite-components/dist/custom-elements'
 import Search from '@arcgis/core/widgets/Search'
 
-import NearbyCard, { ItemProps } from './NearbyCard.vue';
+import NearbyCard from './NearbyCard.vue';
 import NearbyList from './NearbyList.vue';
+import { ItemProps } from '../interfaces'
+
 import { defineComponent } from '@vue/runtime-core';
 import { PropType } from 'vue';
 
@@ -13,7 +15,7 @@ export default defineComponent({
   components: {
     NearbyCard,
     NearbyList
-},
+  },
   props: {
     items: {
       type: Array as PropType<ItemProps[]>
