@@ -1,4 +1,4 @@
-<!-- <script setup lang="ts">
+<script setup lang="ts">
 export interface ItemProps {
     name: string;
     address: string;
@@ -6,23 +6,12 @@ export interface ItemProps {
     distance: number;
 }
 
-defineProps<ItemProps>();
-</script> -->
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-    props: {
-        name: String,
-        address: String,
-        bearing: String,
-        distance: Number
-    },
-    mounted() {
-        console.log('mounted', this.$props)
-    }
-});
+withDefaults(defineProps<ItemProps>(), {
+    name: '',
+    address: '',
+    bearing: '',
+    distance: 0
+})
 </script>
 
 <template>

@@ -1,20 +1,8 @@
-<script lang="ts">
+<script setup lang="ts">
 import NearbyCard from './NearbyCard.vue'
 import { ItemProps } from '../interfaces'
 
-import { defineComponent } from 'vue'
-import { PropType } from 'vue';
-
-export default defineComponent({
-  components: {
-    NearbyCard
-  },
-  props: {
-    items: {
-      type: Array as PropType<ItemProps[]>
-    }
-  }
-})
+defineProps<{ items: ItemProps[] }>()
 </script>
 
 <template>
