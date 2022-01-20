@@ -3,5 +3,6 @@
   "integrationFolder": "e2e",
   "pluginsFile": false,
   "supportFile": false,
-  "video": false
+  "video": false,
+  "experimentalStudio": true
 }
