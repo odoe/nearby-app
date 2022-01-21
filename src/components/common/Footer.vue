@@ -31,6 +31,7 @@ calcite-button {
 }
 
 footer {
-   flex-shrink: 0;
+   position: sticky;
+   bottom: 0;
 }
 </style>

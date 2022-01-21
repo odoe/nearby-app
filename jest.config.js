@@ -6,7 +6,8 @@ export default {
     '^.+\\.ts$': 'ts-jest',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  transformIgnorePatterns: ['<rootDir>/node_modules/(?!@arcgis/core)'],
+  transformIgnorePatterns: ['<rootDir>/node_modules/(?!@arcgis\/core|@esri\/calcite-components)/'],
+  // transformIgnorePatterns: ['<rootDir>/node_modules/'],
   extensionsToTreatAsEsm: ['.ts', '.vue'],
   globals: {
     '@vue/vue3-jest': {
