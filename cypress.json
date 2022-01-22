@@ -1,7 +1,6 @@
 {
-  "baseUrl": "http://localhost:3000",
-  "integrationFolder": "e2e",
-  "pluginsFile": false,
-  "supportFile": false,
-  "video": false
+  "video": false,
+  "screenShots": false,
+  "pluginsFile": true,
+  "supportFile": false
 }

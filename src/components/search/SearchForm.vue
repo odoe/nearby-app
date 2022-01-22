@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineCustomElements } from '@esri/calcite-components/dist/custom-elements'
-import Search from '@arcgis/core/widgets/Search'
+import { useAppStore } from '../../store'
 
 import { ref, onMounted } from 'vue';
 
@@ -8,11 +8,11 @@ defineCustomElements()
 
 const searchRef = ref(null)
 
+const app = useAppStore()
+
 function loadSearch() {
   if (searchRef.value) {
-      const search = new Search({
-        container: searchRef.value as HTMLElement
-      })
+      app.createSearch(searchRef.value)
   }
 }
 

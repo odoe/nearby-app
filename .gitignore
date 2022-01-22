@@ -6,3 +6,4 @@ dist-ssr
 public/assets/*
 cypress/*
 coverage/*
+.env

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import NearbyList from '../components/nearby/NearbyList.vue';
-import { ItemProps } from '../interfaces'
 
-defineProps<{ items: ItemProps[] }>()
+import { useAppStore } from '../store'
+
+const app = useAppStore()
 </script>
 
 <template>
-  <NearbyList :items="items" />
+  <NearbyList :items="app.items" />
 </template>
 
 <style scoped>

@@ -5,4 +5,4 @@ export const geocodeURL = 'https://geocode-api.arcgis.com/arcgis/rest/services/W
  */
 export const portalUrl = 'https://www.arcgis.com' // default Portal URL
 
-export const maxLocations = 50
+export const maxLocations = 10

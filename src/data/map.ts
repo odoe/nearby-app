@@ -3,7 +3,9 @@ import ArcGISMap from '@arcgis/core/Map'
 import Graphic from '@arcgis/core/Graphic'
 import MapView from '@arcgis/core/views/MapView'
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol'
-import { AppState, ItemProps } from '../interfaces'
+import Search from '@arcgis/core/widgets/Search'
+
+import { ItemProps } from '../interfaces'
 
 export const app: any = {}
 
@@ -49,6 +51,11 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
     }
 
     return view.when()
+}
+
+export function initSearch(container: HTMLDivElement) {
+    const search = new Search({ container })
+    app.search = search
 }
 
 export function addLocationToMap(item: ItemProps) {

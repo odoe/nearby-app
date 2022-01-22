@@ -14,6 +14,9 @@ defineCustomElements()
 
 <style>
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
     background-color: var(--calcite-ui-brand);
     color: var(--calcite-ui-foreground-1);
     padding: 0.5rem;

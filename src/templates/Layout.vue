@@ -7,8 +7,8 @@ import Footer from '../components/common/Footer.vue';
 <main>
     <Header />
     <section>
-        <div class="card-container">
-            <slot></slot>
+        <div class="main-container">
+            <router-view />
         </div>
     </section>
     <Footer />
@@ -16,7 +16,7 @@ import Footer from '../components/common/Footer.vue';
 </template>
 
 <style scoped>
-.card-container {
+.main-container {
   width: 100%;
 }
 

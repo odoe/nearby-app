@@ -1,91 +1,23 @@
 <script setup lang="ts">
 import '@esri/calcite-components/dist/calcite/calcite.css'
 import '@arcgis/core/assets/esri/themes/light/main.css'
-import Home from './pages/Home.vue'
-import Footer from './components/common/Footer.vue'
-import { ItemProps } from './interfaces'
-import Layout from './templates/Layout.vue'
+import config from '@arcgis/core/config'
+import { onMounted } from 'vue'
 
-const items: ItemProps[] = [
-  {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  },
-    {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  },
-    {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  },
-    {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  },
-    {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  },
-    {
-    name: 'Donut shop',
-    address: '555 Main St, 90022',
-    bearing: 'SE',
-    distance: 22.4
-  },
-  {
-    name: 'Coffee shop',
-    address: '555 1st St, 91702',
-    bearing: 'N',
-    distance: 5.2
-  }
-];
+import { useAppStore } from './store'
+
+config.apiKey = import.meta.env.VITE_API_KEY as string
+
+const app = useAppStore()
+
+onMounted(async () => {
+  await app.fetchCurrentLocation()
+  await app.fetchPlaces(['Coffee Shop'])
+})
 </script>
 
 <template>
-<Layout>
-  <Home :items="items" />
-</Layout>
+  <router-view></router-view>
 </template>
 
 <style>

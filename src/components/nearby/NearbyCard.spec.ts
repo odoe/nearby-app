@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import NearbyCard from './NearbyCard.vue'
-import { useAppStore } from '../../store'
+// import { useAppStore } from '../../store'
 
 jest.mock('../../store')
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NearbyCard from './NearbyCard.vue'
-import { ItemProps } from '../interfaces'
+import { ItemProps } from '../../interfaces'
 
 defineProps<{ items: ItemProps[] }>()
 </script>
