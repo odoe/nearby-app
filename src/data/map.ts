@@ -4,6 +4,7 @@ import Graphic from '@arcgis/core/Graphic'
 import MapView from '@arcgis/core/views/MapView'
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol'
 import Search from '@arcgis/core/widgets/Search'
+import { getSchemes } from '@arcgis/core/smartMapping/symbology/location'
 
 import { ItemProps } from '../interfaces'
 
@@ -15,12 +16,6 @@ const selectedSymbol = new SimpleMarkerSymbol({
     size: 18,
     color: [73, 210, 197, 1]
 })
-
-const symbol = new SimpleMarkerSymbol({
-    outline: { width: 1, color: [255, 255, 255, 1] },
-    size: 10,
-    color: [235, 169, 43, 1]
-  })
 
 export async function initialize(container: HTMLDivElement, items?: ItemProps[]) {
     const map = new ArcGISMap({
@@ -36,11 +31,20 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
 
     app.view = view
 
+	await view.when()
+
+	const { primaryScheme } = getSchemes({
+		basemap: map.basemap,
+		geometryType: 'point'
+	})
+
+	const sym = new SimpleMarkerSymbol(primaryScheme)
+
     if (items?.length) {
         const graphics = items.map((x) => (new Graphic({
             geometry: new Point(x.location),
             attributes: {...x},
-            symbol,
+            symbol: sym,
             popupTemplate: {
                 title: '{name}',
                 content: '{*}'
@@ -48,6 +52,7 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
         })))
 
         view.graphics.addMany(graphics)
+		view.goTo({ target: graphics })
     }
 
     return view.when()
@@ -59,6 +64,7 @@ export function initSearch(container: HTMLDivElement) {
 }
 
 export function addLocationToMap(item: ItemProps) {
+	if (!item?.location) return;
     const point = new Point(item.location)
     console.log(item)
     const graphic = new Graphic({

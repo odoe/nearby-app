@@ -7,7 +7,6 @@ import { locate } from "./data/locate";
 
 interface AppState {
   currentLocation?: LatLon;
-  isMap: boolean;
   items: ItemProps[];
   selectedItem?: ItemProps;
 }
@@ -16,13 +15,12 @@ export const useAppStore = defineStore({
   id: "app",
   state: () =>
     ({
-      isMap: false,
       items: [],
     } as AppState),
 
   actions: {
     async createMap(mapContainer: HTMLDivElement) {
-      if (this.isMap && mapContainer) {
+      if (mapContainer) {
         await initialize(mapContainer, this.items);
         addLocationToMap(this.selectedItem!);
       }

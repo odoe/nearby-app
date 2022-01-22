@@ -15,7 +15,7 @@ withDefaults(defineProps<ItemProps>(), {
 </script>
 
 <template>
-    <calcite-card>
+    <calcite-card class="nearby-card">
         <span slot="title"><calcite-icon icon="beaker"></calcite-icon>{{ name }}</span>
         <span slot="subtitle">
             {{ bearing }}
@@ -26,4 +26,7 @@ withDefaults(defineProps<ItemProps>(), {
 </template>
 
 <style scoped>
+.nearby-card {
+	cursor: pointer;
+}
 </style>

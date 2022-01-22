@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h3>My App</h3>
+        <h3>{{ title }}</h3>
         <SearchForm />
     </header>
 </template>
@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import { defineCustomElements } from '@esri/calcite-components/dist/custom-elements'
 import SearchForm from '../search/SearchForm.vue'
+import { title } from '../../config'
 
 defineCustomElements()
 </script>
