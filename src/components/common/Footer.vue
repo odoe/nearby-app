@@ -2,19 +2,28 @@
     <footer>
       <aside>
         <nav>
-          <calcite-button appearance="outline" color="blue" width="full" label="Home">
+          <calcite-button @click="goTo('/')" appearance="outline" color="blue" width="full" label="Home">
             <calcite-icon icon="home"></calcite-icon>
           </calcite-button>
-          <calcite-button appearance="outline" color="blue" width="full" label="Map">
+          <calcite-button @click="goTo('/map')" appearance="outline" color="blue" width="full" label="Map">
             <calcite-icon icon="layer"></calcite-icon>
           </calcite-button>
-          <calcite-button appearance="outline" color="blue" width="full" label="User">
+          <calcite-button @click="goTo('/user')" appearance="outline" color="blue" width="full" label="User">
             <calcite-icon icon="user"></calcite-icon>
           </calcite-button>
         </nav>
       </aside>
     </footer>
 </template>
+
+<script setup lang="ts">import router from '../../router';
+
+
+const goTo = (route: string) => {
+  router.push(route)
+}
+
+</script>
 
 <style>
 nav {

@@ -9,6 +9,11 @@ const routes: RouteRecordRaw[] =
                 name: 'Home',
                 path: '',
                 component: () => import('../pages/Home.vue')
+            },
+            {
+                name: 'Map',
+                path: '/map',
+                component: () => import('../pages/WebMap.vue')
             }
         ]
     }];
