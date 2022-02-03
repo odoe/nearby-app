@@ -3,12 +3,11 @@ export default {
   testEnvironment: 'jsdom',
   transform: {
     '^.+\\.vue$': '@vue/vue3-jest',
-    '^.+\\.ts$': 'ts-jest',
+    '^.*\\.(tsx?|js)$': 'ts-jest',
   },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  // transformIgnorePatterns: ['<rootDir>/node_modules/(?!|@arcgis|@esri|@stencil|@popperjs)/'],
-  transformIgnorePatterns: ['<rootDir>/node_modules/(?!(@arcgis|@esri|@stencil|@popperjs)/)', '/@arcgis/', '/@esri/', '/@stencil/', '/@popperjs/'],
-  // transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  transformIgnorePatterns: ['node_modules/(?!(@arcgis|@esri|@stencil|@popperjs)/)'],
+  moduleFileExtensions: ['json', 'js', 'jsx', 'ts', 'tsx', 'vue'],
   extensionsToTreatAsEsm: ['.ts', '.vue'],
   globals: {
     '@vue/vue3-jest': {

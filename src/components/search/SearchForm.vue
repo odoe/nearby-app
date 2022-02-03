@@ -12,7 +12,7 @@ const app = useAppStore()
 
 function loadSearch() {
   if (searchRef.value) {
-      app.createSearch(searchRef.value)
+      app?.createSearch(searchRef.value)
   }
 }
 

@@ -6,17 +6,15 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "test:all": "npm run test:unit && npm run test:e2e",
-    "test:unit": "jest src --silent",
-    "test:e2e": "start-server-and-test dev http-get://localhost:3000 cypress",
-    "cypress": "cypress open-ct"
+    "test": "jest src --silent"
   },
   "dependencies": {
     "@arcgis/core": "^4.22.2",
     "@types/chai": "^4.3.0",
     "pinia": "^2.0.9",
     "vue": "^3.2.16",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vue-screen": "^2.1.0-beta.1"
   },
   "devDependencies": {
     "@cypress/vite-dev-server": "^2.2.2",

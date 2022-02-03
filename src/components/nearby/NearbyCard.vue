@@ -16,10 +16,13 @@ withDefaults(defineProps<ItemProps>(), {
 
 <template>
     <calcite-card class="nearby-card">
-        <span slot="title"><calcite-icon icon="beaker"></calcite-icon>{{ name }}</span>
+        <span slot="title" class="nearby-card__title"><calcite-icon icon="beaker"></calcite-icon><label class="nearby-card__title-label">{{ name }}</label></span>
         <span slot="subtitle">
-            {{ bearing }}
-            <small>{{distance?.toFixed(2)}}m</small>
+            <span>
+                {{ bearing }}
+                <small>{{distance?.toFixed(2)}}m</small>
+            </span>
+            <br />
             <small>{{address}}</small>
         </span>
     </calcite-card>
@@ -28,5 +31,17 @@ withDefaults(defineProps<ItemProps>(), {
 <style scoped>
 .nearby-card {
 	cursor: pointer;
+}
+
+.nearby-card__title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.nearby-card__title-label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 </style>
