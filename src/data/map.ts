@@ -52,7 +52,9 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
         })))
 
         view.graphics.addMany(graphics)
-		view.goTo({ target: graphics })
+        const controller = new AbortController()
+        app.abortController = controller
+		view.goTo({ target: graphics }, { signal: controller.signal })
     }
 
     return view.when()
@@ -69,7 +71,7 @@ export function addLocationToMap(item: ItemProps) {
     console.log(item)
     const graphic = new Graphic({
         geometry: point,
-        attributes: {...item},
+        attributes: { ...item },
         symbol: selectedSymbol,
         popupTemplate: {
             title: '{name}',
@@ -77,5 +79,10 @@ export function addLocationToMap(item: ItemProps) {
         }
     })
     app.view.graphics.add(graphic)
+    if (app.abortController) {
+        app.abortController.abort()
+        delete app.abortController
+    }
+    console.log(graphic)
     app.view.goTo({target: graphic, zoom: 16})
 }
