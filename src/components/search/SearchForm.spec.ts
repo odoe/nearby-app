@@ -4,7 +4,7 @@ import SearchForm from './SearchForm.vue'
 
 jest.mock('../../store')
 
-describe('SearchForm', () => {
+describe('components/search/SearchForm', () => {
     it('should display search', async () => {
         const wrapper = shallowMount(SearchForm, {
             global: {

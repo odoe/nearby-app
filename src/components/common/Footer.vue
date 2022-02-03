@@ -8,9 +8,6 @@
           <calcite-button @click="goTo('/map')" appearance="outline" color="blue" width="full" label="Map">
             <calcite-icon icon="layer"></calcite-icon>
           </calcite-button>
-          <calcite-button @click="goTo('/user')" appearance="outline" color="blue" width="full" label="User">
-            <calcite-icon icon="user"></calcite-icon>
-          </calcite-button>
         </nav>
       </aside>
     </footer>

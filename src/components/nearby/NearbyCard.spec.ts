@@ -5,7 +5,7 @@ import NearbyCard from './NearbyCard.vue'
 
 jest.mock('../../store')
 
-describe('NearbyCard', () => {
+describe('components/nearby/NearbyCard', () => {
     it('should display name', async () => {
         const item = {
             name: 'Donut shop',

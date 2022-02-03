@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "test": "jest src --silent"
+    "test": "jest src --silent --coverage",
+    "test:watch": "jest src --silent --coverage --watch"
   },
   "dependencies": {
     "@arcgis/core": "^4.22.2",
