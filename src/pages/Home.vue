@@ -11,7 +11,4 @@ const app = useAppStore()
 </template>
 
 <style scoped>
-calcite-list-item {
-  margin-bottom: 0.25rem;
-}
 </style>

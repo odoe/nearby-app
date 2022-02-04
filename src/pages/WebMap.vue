@@ -1,24 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useAppStore } from '../store'
-
-const mapDiv = ref<HTMLDivElement>()
-
-const app = useAppStore()
-
-onMounted(() => {
-    app.createMap(mapDiv.value!)
-})
-
+import WebMap from '../components/map/WebMap.vue'
 </script>
 
 <template>
-  <div ref="mapDiv" class="map-container"></div>
+  <WebMap />
 </template>
 
 <style scoped>
-.map-container {
-    width: 100%;
-    height: 100%;
-}
 </style>

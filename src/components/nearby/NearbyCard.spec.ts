@@ -1,9 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { createTestingPinia } from '@pinia/testing'
 import NearbyCard from './NearbyCard.vue'
-// import { useAppStore } from '../../store'
-
-jest.mock('../../store')
 
 describe('components/nearby/NearbyCard', () => {
     it('should display name', async () => {
@@ -15,19 +11,9 @@ describe('components/nearby/NearbyCard', () => {
         }
 
         const wrapper = mount(NearbyCard, {
-            props: item,
-            global: {
-                plugins: [createTestingPinia()],
-            }
+            props: item
         })
 
         expect(wrapper.find('span[slot=title]').text()).toEqual(item.name)
-
-        // const app = useAppStore()
-
-        // wrapper.findAll('calcite-card')[0].trigger('click')
-        // wrapper.trigger('click')
-
-        // expect(app.selectedItem).toBe(item)
     })
 })
