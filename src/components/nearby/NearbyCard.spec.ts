@@ -9,7 +9,6 @@ describe('components/nearby/NearbyCard', () => {
             bearing: 'SE',
             distance: 22.4
         }
-
         const wrapper = mount(NearbyCard, {
             props: item
         })

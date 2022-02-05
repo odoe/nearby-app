@@ -1,3 +1,5 @@
+const mock_applyEdits = jest.fn()
+
 import * as map from './map'
 import ArcGISMap from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
@@ -21,8 +23,28 @@ jest.mock('@arcgis/core/symbols/SimpleMarkerSymbol')
 jest.mock('@arcgis/core/widgets/Search')
 jest.mock('@arcgis/core/Graphic')
 jest.mock('@arcgis/core/geometry/Point')
+jest.mock('@arcgis/core/layers/FeatureLayer', () => {
+	return jest.fn().mockImplementation(() => {
+		return {
+			applyEdits: mock_applyEdits,
+			renderer: {
+				set: jest.fn()
+			}
+		}
+	})
+})
 
 let spy: any
+		const item = {
+			location: {
+				latitude: 34,
+				longitude: -118
+			},
+			name: 'Name',
+			address: '999 Name St',
+			distance: 999,
+			bearing: 'NE'
+		}
 
 describe('data/map', () => {
 	beforeEach(() => {
@@ -36,16 +58,18 @@ describe('data/map', () => {
 				} as any
 			})
 	})
+
 	afterEach(() => {
 		spy.mockClear()
 	})
 
-	it('should initialize map and view', async () => {
+	it('should initialize map and view with items', async () => {
 		const container = document.createElement('div')
-		await map.initialize(container)
+		await map.initialize(container, [item])
 		expect(spy).toHaveBeenCalledTimes(1)
 		expect(ArcGISMap).toHaveBeenCalledTimes(1)
 		expect(MapView).toHaveBeenCalledTimes(1)
+		expect(mock_applyEdits).toHaveBeenCalledTimes(1)
 	})
 
 	it('should initialize the search', async () => {
@@ -55,17 +79,7 @@ describe('data/map', () => {
 	})
 
 	it('should add a graphic to the map', () => {
-		const item = {
-			location: {
-				latitude: 34,
-				longitude: -118
-			},
-			name: 'Name',
-			address: '999 Name St',
-			distance: 999,
-			bearing: 'NE'
-		}
 		map.addLocationToMap(item)
-		expect(Graphic).toHaveBeenCalledTimes(1)
+		expect(Graphic).toHaveBeenCalledTimes(3)
 	})
 })
