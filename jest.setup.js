@@ -17,7 +17,12 @@ jest.mock('@arcgis/core/views/MapView', () => {
 			},
 			goTo: jest.fn(),
 			when: jest.fn(),
-			on: jest.fn()
+			on: jest.fn(),
+			whenLayerView: jest.fn().mockImplementation(() => {
+				return {
+					highlight: jest.fn()
+				}
+			})
 		}
 	})
 })

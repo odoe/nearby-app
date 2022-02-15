@@ -5,6 +5,8 @@ import PopupTemplate from '@arcgis/core/PopupTemplate'
 import SimpleRenderer from '@arcgis/core/renderers/SimpleRenderer'
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol'
 
+export const ACTION_ID = 'directions'
+
 // Fields
 const fields = [
 	{
@@ -53,18 +55,20 @@ const popupTemplate = new PopupTemplate({
 	title: '{name}',
 	content: ({ graphic }: { graphic: Graphic }) => {
 		const { address, phone } = graphic.attributes
+		const container = document.createElement('div')
 		const list = document.createElement('calcite-value-list')
 		list.innerHTML = `
 			<calcite-value-list-item label="${address}" description="
-			${phone}
+			Phone: ${phone || 'none'}
 			">
 		`
-		return list
+		container.appendChild(list)
+		return container
 	},
 	actions: [
 		{
 			title: 'Directions',
-			id: 'directions',
+			id: ACTION_ID,
 			className: 'esri-icon-directions'
 		} as any
 	],

@@ -1,6 +1,7 @@
-import Graphic from "@arcgis/core/Graphic";
-import MapView from "@arcgis/core/views/MapView";
-import DirectionsViewModel from "@arcgis/core/widgets/Directions/DirectionsViewModel";
+import Graphic from '@arcgis/core/Graphic';
+import MapView from '@arcgis/core/views/MapView';
+import Stop from '@arcgis/core/rest/support/Stop'
+import DirectionsViewModel from '@arcgis/core/widgets/Directions/DirectionsViewModel';
 
 interface GetDirectionsParams {
     start: Graphic,
@@ -11,10 +12,16 @@ interface GetDirectionsParams {
 const directionsVM = new DirectionsViewModel()
 
 export async function getDirections({ start, stop, view }: GetDirectionsParams) {
+    const _start = new Stop({
+        geometry: start.geometry
+    })
+    const _stop = new Stop({
+        geometry: stop.geometry
+    })
     directionsVM.view = view
     await directionsVM.load()
     directionsVM.stops.removeAll()
-    directionsVM.stops.addMany([start, stop] as any[])
+    directionsVM.stops.addMany([_start, _stop])
     const walkingTravelMode = directionsVM.travelModes.find(mode => mode.name === 'Walking Time')
     if (walkingTravelMode) {
         directionsVM.selectedTravelMode = walkingTravelMode

@@ -9,7 +9,14 @@ import { getSchemes } from '@arcgis/core/smartMapping/symbology/location'
 import { nearbyLayer } from './layer'
 import { ItemProps } from '../interfaces'
 
-export const app: any = {}
+const ZOOM = 16
+const BASEMAP = 'arcgis-navigation'
+
+export const app: any = {
+	nearbyLayerView: null
+}
+
+let highlight: any
 
 const selectedSymbol = new SimpleMarkerSymbol({
 	style: "square",
@@ -20,7 +27,7 @@ const selectedSymbol = new SimpleMarkerSymbol({
 
 export async function initialize(container: HTMLDivElement, items?: ItemProps[]) {
 	const map = new ArcGISMap({
-		basemap: 'arcgis-navigation',
+		basemap: BASEMAP,
 		layers: [ nearbyLayer ]
 	})
 
@@ -44,16 +51,6 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
 
 	nearbyLayer.renderer.set('symbol', sym)
 
-	view.on('click', ({ mapPoint }) => {
-		nearbyLayer.applyEdits({
-			addFeatures: [
-				new Graphic({
-					geometry: mapPoint
-				})
-			]
-		}).catch((error) => console.warn(error))
-	})
-
 	if (items?.length) {
 		const graphics = items.map((x) => (new Graphic({
 			geometry: new Point(x.location),
@@ -61,6 +58,7 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
 				address: x.address,
 				bearing: x.bearing,
 				distance: x.distance,
+				phone: x.phone,
 				name: x.name
 			},
 		})))
@@ -75,6 +73,8 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
 		})
 	}
 
+	app.nearbyLayerView = await view.whenLayerView(nearbyLayer)
+
 	return view.when()
 }
 
@@ -83,22 +83,19 @@ export function initSearch(container: HTMLDivElement) {
 	app.search = search
 }
 
-export function addLocationToMap(item: ItemProps) {
+export async function addLocationToMap(item: ItemProps) {
 	if (!item?.location) return;
+	const query = nearbyLayer.createQuery()
+	query.where = `address = '${item.address}'`
+	const oids = await nearbyLayer.queryObjectIds(query)
+	highlight && highlight.remove()
+	highlight = app.nearbyLayerView.highlight(oids)
 	const point = new Point(item.location)
-	const graphic = new Graphic({
-		geometry: point,
-		attributes: { ...item },
-		symbol: selectedSymbol,
-		popupTemplate: {
-			title: '{name}',
-			content: '{*}'
-		}
-	})
-	app.view.graphics.add(graphic)
 	if (app.abortController) {
 		app.abortController.abort()
 		delete app.abortController
 	}
-	app.view.goTo({target: graphic, zoom: 16})
+	app.view.goTo({ target: point, zoom: ZOOM })
 }
+
+async function onActionHandler() {}

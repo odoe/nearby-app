@@ -40,7 +40,7 @@ describe('data/routing', () => {
         expect(DirectionsViewModel).toHaveBeenCalledTimes(1)
         expect(mock_load).toHaveBeenCalledTimes(1)
         expect(mock_removeAll).toHaveBeenCalledTimes(1)
-        expect(mock_addMany).toHaveBeenCalledWith([start, stop])
+        expect(mock_addMany).toHaveBeenCalledTimes(1)
         expect(mock_getDirections).toHaveBeenCalledTimes(1)
     })
 

@@ -1,11 +1,11 @@
 const mock_applyEdits = jest.fn()
+const mock_queryObjectIds = jest.fn()
 
 import * as map from './map'
 import ArcGISMap from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
 import Search from '@arcgis/core/widgets/Search'
 import * as locationSchemes from '@arcgis/core/smartMapping/symbology/location'
-import Graphic from '@arcgis/core/Graphic'
 
 jest.mock('@arcgis/core/layers/FeatureLayer', () => {
 	return jest.fn().mockImplementation(() => {
@@ -13,6 +13,13 @@ jest.mock('@arcgis/core/layers/FeatureLayer', () => {
 			applyEdits: mock_applyEdits,
 			renderer: {
 				set: jest.fn()
+			},
+			createQuery: jest.fn().mockImplementation(() => {
+				return {}
+			}),
+			queryObjectIds: mock_queryObjectIds,
+			popup: {
+				on: jest.fn()
 			}
 		}
 	})
@@ -27,7 +34,8 @@ const item = {
 	name: 'Name',
 	address: '999 Name St',
 	distance: 999,
-	bearing: 'NE'
+	bearing: 'NE',
+	phone: '(909) 999-9999'
 }
 
 describe('data/map', () => {
@@ -62,8 +70,8 @@ describe('data/map', () => {
 		expect(Search).toHaveBeenCalledTimes(1)
 	})
 
-	it('should add a graphic to the map', () => {
+	it('should highlight feature on map', () => {
 		map.addLocationToMap(item)
-		expect(Graphic).toHaveBeenCalledTimes(3)
+		expect(mock_queryObjectIds).toHaveBeenCalledTimes(1)
 	})
 })

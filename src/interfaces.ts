@@ -3,6 +3,7 @@ export interface ItemProps {
     address: string;
     bearing: string;
     distance: number;
+    phone: string;
     location?: LatLon
 }
 
