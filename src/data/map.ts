@@ -7,7 +7,6 @@ import Search from '@arcgis/core/widgets/Search'
 import { getSchemes } from '@arcgis/core/smartMapping/symbology/location'
 
 import { nearbyLayer } from './layer'
-
 import { ItemProps } from '../interfaces'
 
 export const app: any = {}
@@ -45,19 +44,35 @@ export async function initialize(container: HTMLDivElement, items?: ItemProps[])
 
 	nearbyLayer.renderer.set('symbol', sym)
 
+	view.on('click', ({ mapPoint }) => {
+		nearbyLayer.applyEdits({
+			addFeatures: [
+				new Graphic({
+					geometry: mapPoint
+				})
+			]
+		}).catch((error) => console.warn(error))
+	})
+
 	if (items?.length) {
 		const graphics = items.map((x) => (new Graphic({
 			geometry: new Point(x.location),
-			attributes: {...x},
+			attributes: {
+				address: x.address,
+				bearing: x.bearing,
+				distance: x.distance,
+				name: x.name
+			},
 		})))
+
+		const controller = new AbortController()
+		app.abortController = controller
+
+		await view.goTo({ target: graphics }, { signal: controller.signal })
 
 		await nearbyLayer.applyEdits({
 			addFeatures: graphics
 		})
-
-		const controller = new AbortController()
-		app.abortController = controller
-		view.goTo({ target: graphics }, { signal: controller.signal })
 	}
 
 	return view.when()
@@ -71,7 +86,6 @@ export function initSearch(container: HTMLDivElement) {
 export function addLocationToMap(item: ItemProps) {
 	if (!item?.location) return;
 	const point = new Point(item.location)
-	console.log(item)
 	const graphic = new Graphic({
 		geometry: point,
 		attributes: { ...item },

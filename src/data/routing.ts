@@ -14,7 +14,7 @@ export async function getDirections({ start, stop, view }: GetDirectionsParams) 
     directionsVM.view = view
     await directionsVM.load()
     directionsVM.stops.removeAll()
-    directionsVM.stops.addMany([start, stop])
+    directionsVM.stops.addMany([start, stop] as any[])
     const walkingTravelMode = directionsVM.travelModes.find(mode => mode.name === 'Walking Time')
     if (walkingTravelMode) {
         directionsVM.selectedTravelMode = walkingTravelMode

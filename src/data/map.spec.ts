@@ -7,22 +7,6 @@ import Search from '@arcgis/core/widgets/Search'
 import * as locationSchemes from '@arcgis/core/smartMapping/symbology/location'
 import Graphic from '@arcgis/core/Graphic'
 
-jest.mock('@arcgis/core/Map')
-jest.mock('@arcgis/core/views/MapView', () => {
-	return jest.fn().mockImplementation(() => {
-		return {
-			graphics: {
-				add: jest.fn()
-			},
-			goTo: jest.fn(),
-			when: jest.fn()
-		}
-	})
-})
-jest.mock('@arcgis/core/symbols/SimpleMarkerSymbol')
-jest.mock('@arcgis/core/widgets/Search')
-jest.mock('@arcgis/core/Graphic')
-jest.mock('@arcgis/core/geometry/Point')
 jest.mock('@arcgis/core/layers/FeatureLayer', () => {
 	return jest.fn().mockImplementation(() => {
 		return {
@@ -35,16 +19,16 @@ jest.mock('@arcgis/core/layers/FeatureLayer', () => {
 })
 
 let spy: any
-		const item = {
-			location: {
-				latitude: 34,
-				longitude: -118
-			},
-			name: 'Name',
-			address: '999 Name St',
-			distance: 999,
-			bearing: 'NE'
-		}
+const item = {
+	location: {
+		latitude: 34,
+		longitude: -118
+	},
+	name: 'Name',
+	address: '999 Name St',
+	distance: 999,
+	bearing: 'NE'
+}
 
 describe('data/map', () => {
 	beforeEach(() => {

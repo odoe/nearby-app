@@ -9,6 +9,7 @@ export default {
   transformIgnorePatterns: ['node_modules/(?!(@arcgis|@esri|@stencil|@popperjs)/)'],
   moduleFileExtensions: ['json', 'js', 'jsx', 'ts', 'tsx', 'vue'],
   extensionsToTreatAsEsm: ['.ts', '.vue'],
+  setupFiles: ['./jest.setup.js'],
   globals: {
     '@vue/vue3-jest': {
       compilerOptions: {

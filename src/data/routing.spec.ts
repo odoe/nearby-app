@@ -12,8 +12,6 @@ import MapView from '@arcgis/core/views/MapView'
 import DirectionsViewModel from '@arcgis/core/widgets/Directions/DirectionsViewModel'
 import * as routing from './routing'
 
-jest.mock('@arcgis/core/views/MapView')
-
 jest.mock('@arcgis/core/widgets/Directions/DirectionsViewModel', () => {
     return jest.fn().mockImplementation(() => {
         return {
