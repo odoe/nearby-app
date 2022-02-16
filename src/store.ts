@@ -1,14 +1,17 @@
 import { defineStore } from 'pinia'
 import { ItemProps, LatLon } from './interfaces'
-
+import { ACTION_ID } from './data/layer'
 import { initialize, initSearch, addLocationToMap } from './data/map'
 import { findNearbyPlaces } from './data/places'
 import { locate } from './data/locate'
+
 import MapView from '@arcgis/core/views/MapView'
-import { ACTION_ID } from './data/layer'
 import Graphic from '@arcgis/core/Graphic'
 import Point from '@arcgis/core/geometry/Point'
+import { distance } from '@arcgis/core/geometry/geometryEngine'
+
 import { getDirections } from './data/routing'
+import { bearings } from './utils/bearings'
 
 interface AppState {
   currentLocation?: LatLon
@@ -53,8 +56,13 @@ export const useAppStore = defineStore({
           name: a.attributes['PlaceName'],
           address: a.attributes['Place_addr'],
           phone: a.attributes['Phone'],
-          bearing: 'N',
-          distance: 5,
+          bearing: bearings(
+            this.currentLocation?.latitude as number,
+            this.currentLocation?.longitude as number,
+            a.location.latitude,
+            a.location.longitude
+          ),
+          distance: distance(new Point(this.currentLocation), new Point(a.location)),
           location: a.location,
         }))
         this.items = items
