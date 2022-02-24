@@ -1,9 +1,9 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useAppStore } from './store'
+import { useAppStore } from '../src/store'
 
-import * as locate from './data/locate'
-import * as map from './data/map'
-import * as places from './data/places'
+import * as locate from '../src/data/locate'
+import * as map from '../src/data/map'
+import * as places from '../src/data/places'
 
 const coords = {
   latitude: 34,

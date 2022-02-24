@@ -1,24 +1,16 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import copy from "rollup-plugin-copy";
+import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes("calcite-"),
+          isCustomElement: (tag) => tag.includes('calcite-'),
         },
       },
     }),
-    copy({
-      // copy over the calcite-components assets
-      targets: [
-        {
-          src: "node_modules/@arcgis/core/assets/",
-          dest: "public/",
-        },
-      ],
-    }),
+    VitePWA({}),
   ],
-});
+})

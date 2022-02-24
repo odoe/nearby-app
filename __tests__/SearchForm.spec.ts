@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
-import SearchForm from './SearchForm.vue'
+import SearchForm from '../src/components/search/SearchForm.vue'
 
-jest.mock('../../store')
+jest.mock('../src/store')
 
 describe('components/search/SearchForm', () => {
     it('should display search', async () => {

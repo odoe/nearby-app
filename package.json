@@ -6,33 +6,30 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
-    "test": "jest src --silent --coverage",
-    "test:watch": "jest src --silent --coverage --watch"
+    "test": "jest --silent --coverage",
+    "test:watch": "jest --silent --coverage --watch"
   },
   "dependencies": {
     "@arcgis/core": "next",
-    "@types/chai": "^4.3.0",
     "pinia": "^2.0.9",
     "vue": "^3.2.31",
     "vue-router": "^4.0.12",
     "vue-screen": "^2.1.0-beta.1"
   },
   "devDependencies": {
-    "@cypress/vite-dev-server": "^2.2.2",
-    "@cypress/vue": "^3.1.1",
     "@pinia/testing": "^0.0.9",
-    "@types/cypress": "^1.1.3",
     "@types/jest": "^27.4.0",
+    "@types/sortablejs": "^1.10.7",
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/test-utils": "^2.0.0-rc.17",
     "@vue/vue3-jest": "^27.0.0-alpha.4",
-    "cypress": "^9.3.1",
     "jest": "^27.4.7",
     "rollup-plugin-copy": "^3.4.0",
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^27.1.3",
     "typescript": "^4.5.4",
     "vite": "^2.8.2",
+    "vite-plugin-pwa": "^0.11.13",
     "vue-tsc": "^0.31.4"
   }
 }

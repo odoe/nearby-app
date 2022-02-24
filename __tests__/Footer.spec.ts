@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
-import Footer from './Footer.vue'
-import router from '../../router';
+import Footer from '../src/components/common/Footer.vue'
+import router from '../src/router'
 
 const spy = jest.spyOn(router, 'push')
 
