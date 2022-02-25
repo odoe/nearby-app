@@ -1,5 +1,5 @@
 
-import { bearings } from '../src/utils/bearings'
+import { bearings } from '../../src/utils/bearings'
 
 describe('utils/bearings', () => {
   describe('bearings', () => {

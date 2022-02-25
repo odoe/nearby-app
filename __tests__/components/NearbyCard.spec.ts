@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import NearbyCard from '../src/components/nearby/NearbyCard.vue'
+import NearbyCard from '../../src/components/nearby/NearbyCard.vue'
 
 describe('components/nearby/NearbyCard', () => {
     it('should display name', async () => {

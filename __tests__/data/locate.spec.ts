@@ -1,4 +1,4 @@
-import * as locate from '../src/data/locate'
+import * as locate from '../../src/data/locate'
 
 const coords = {
   latitude: 34,

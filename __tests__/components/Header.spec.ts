@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils'
 import Header from '.../../../src/components/common/Header.vue'
-import { title } from '../src/config'
+import { title } from '../../src/config'
 
 describe('components/common/Header', () => {
     it('should have title in config', async () => {

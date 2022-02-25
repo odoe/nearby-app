@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NearbyList from '../components/nearby/NearbyList.vue';
+import NearbyList from '../components/nearby/NearbyList.vue'
 
 import { useAppStore } from '../store'
 

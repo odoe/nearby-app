@@ -1,4 +1,4 @@
-import { nearbyLayer } from '../src/data/layer'
+import { nearbyLayer } from '../../src/data/layer'
 
 describe('data/layer', () => {
 	it('should be a defaults defined', () => {

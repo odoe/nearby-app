@@ -10,7 +10,7 @@ const mock_travelMode = {
 import Graphic from '@arcgis/core/Graphic'
 import MapView from '@arcgis/core/views/MapView'
 import DirectionsViewModel from '@arcgis/core/widgets/Directions/DirectionsViewModel'
-import * as routing from '../src/data/routing'
+import * as routing from '../../src/data/routing'
 
 jest.mock('@arcgis/core/widgets/Directions/DirectionsViewModel', () => {
     return jest.fn().mockImplementation(() => {

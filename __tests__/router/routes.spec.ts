@@ -1,4 +1,4 @@
-import routes from '../src/router/routes'
+import routes from '../../src/router/routes'
 
 describe('router/routes', () => {
     it('should contain all routes for application', async () => {

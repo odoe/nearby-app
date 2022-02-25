@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
-import NearbyList from '../src/components/nearby/NearbyList.vue'
+import NearbyList from '../../src/components/nearby/NearbyList.vue'
 
-jest.mock('../src/store')
+jest.mock('../../src/store')
 
 const item1 = {
     name: 'Donut shop',

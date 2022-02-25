@@ -1,7 +1,7 @@
 const mock_applyEdits = jest.fn()
 const mock_queryObjectIds = jest.fn()
 
-import * as map from '../src/data/map'
+import * as map from '../../src/data/map'
 import ArcGISMap from '@arcgis/core/Map'
 import MapView from '@arcgis/core/views/MapView'
 import Search from '@arcgis/core/widgets/Search'

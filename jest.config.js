@@ -5,8 +5,6 @@ export default {
     '^.+\\.vue$': '@vue/vue3-jest',
     '^.*\\.(tsx?|js)$': 'ts-jest',
   },
-  testMatch: ['**/__tests__/*.ts?(x)'],
-  // testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   transformIgnorePatterns: ['node_modules/(?!(@arcgis|@esri|@stencil|@popperjs)/)'],
   moduleFileExtensions: ['json', 'js', 'jsx', 'ts', 'tsx', 'vue'],
   extensionsToTreatAsEsm: ['.ts', '.vue'],

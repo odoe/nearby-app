@@ -1,4 +1,4 @@
-import * as places from '../src/data/places'
+import * as places from '../../src/data/places'
 import * as locator from '@arcgis/core/rest/locator'
 
 const coords = {
