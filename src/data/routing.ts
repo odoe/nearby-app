@@ -1,7 +1,7 @@
 import Graphic from '@arcgis/core/Graphic';
 import MapView from '@arcgis/core/views/MapView'
 import Stop from '@arcgis/core/rest/support/Stop'
-import DirectionsViewModel from '@arcgis/core/widgets/Directions/DirectionsViewModel';
+import DirectionsViewModel from '@arcgis/core/widgets/Directions/DirectionsViewModel'
 
 interface GetDirectionsParams {
     start: Graphic,
