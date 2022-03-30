@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import '@esri/calcite-components/dist/components/calcite-list'
+import '@esri/calcite-components/dist/components/calcite-list-item'
+
 import NearbyCard from './NearbyCard.vue'
 import { ItemProps } from '../../interfaces'
 import { useAppStore } from '../../store'
