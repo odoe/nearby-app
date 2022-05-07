@@ -14,7 +14,9 @@
 </template>
 
 <script setup lang="ts">
-import router from '../../router';
+import '@esri/calcite-components/dist/components/calcite-button'
+import '@esri/calcite-components/dist/components/calcite-icon'
+import router from '../../router'
 
 const goTo = (route: string) => {
   router.push(route)

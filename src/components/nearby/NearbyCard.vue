@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import '@esri/calcite-components/dist/components/calcite-card'
+import '@esri/calcite-components/dist/components/calcite-icon'
+
 export interface ItemProps {
     name: string;
     address: string;

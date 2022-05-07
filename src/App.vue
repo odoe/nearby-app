@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import '@esri/calcite-components/dist/calcite/calcite.css'
-import '@arcgis/core/assets/esri/themes/light/main.css'
 import config from '@arcgis/core/config'
 import { onMounted } from 'vue'
 

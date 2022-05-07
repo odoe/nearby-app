@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import '@esri/calcite-components/dist/calcite/calcite.css'
+import '@arcgis/core/assets/esri/themes/light/main.css'
 import Header from '../components/common/Header.vue'
 import Footer from '../components/common/Footer.vue';
 

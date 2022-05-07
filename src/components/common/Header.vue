@@ -6,11 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineCustomElements } from '@esri/calcite-components/dist/custom-elements'
 import SearchForm from '../search/SearchForm.vue'
 import { title } from '../../config'
-
-defineCustomElements()
 </script>
 
 <style>
