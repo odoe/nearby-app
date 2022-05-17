@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import '@esri/calcite-components/dist/components/calcite-card'
 import '@esri/calcite-components/dist/components/calcite-icon'
-
 export interface ItemProps {
     name: string;
     address: string;
@@ -19,7 +18,10 @@ withDefaults(defineProps<ItemProps>(), {
 
 <template>
     <calcite-card class="nearby-card">
-        <span slot="title" class="nearby-card__title"><calcite-icon icon="beaker"></calcite-icon><label class="nearby-card__title-label">{{ name }}</label></span>
+        <span slot="title" class="nearby-card__title">
+            <calcite-icon icon="beaker"></calcite-icon>
+            <label class="nearby-card__title-label">{{ name }}</label>
+        </span>
         <span slot="subtitle">
             <span>
                 {{ bearing }}
